@@ -1,0 +1,30 @@
+id,nl,ground_truth,llm_answer,sql_used,sql_valid,correct,latency_s
+45,What are the five most common medical conditions?,"['Arthritis', 'Diabetes', 'Obesity', 'Hypertension', 'Asthma']","Based on the provided table, the five most common medical conditions are:
+
+1. Arthritis (with 2533 cases)
+2. Diabetes (with 2498 cases)
+3. Obesity (with 2481 cases)
+4. Hypertension (with 2474 cases)
+5. Asthma (with 1897 cases)
+
+These conditions are listed in order of their frequency, with Arthritis being the most common and Asthma being the fifth most common.","SELECT ""MedicalCondition"", COUNT(*) AS condition_count
+FROM claims_tbl
+GROUP BY ""MedicalCondition""
+ORDER BY condition_count DESC
+LIMIT 5",True,False,4.407601356506348
+50,Which three insurance providers have the highest total billing amounts?,"{'شركة القلعة للتأمين ': 106849147.48, 'شركة الوفاء الوطنية للتأمين': 106559153.11, 'شركة الأصالة للتأمين': 105657293.96}","Based on the provided table, the three insurance providers with the highest total billing amounts are:
+
+1. شركة القلعة للتأمين with a total billing amount of 106,849,147.48
+2. شركة الوفاء الوطنية للتأمين with a total billing amount of 106,559,153.11
+3. شركة الأصالة للتأمين with a total billing amount of 105,657,293.96
+
+These three insurance providers have the highest total billing amounts.","SELECT 
+    insurance_provider_name, 
+    SUM(billing_amount) AS total_billing_amount
+FROM 
+    claims_tbl
+GROUP BY 
+    insurance_provider_name
+ORDER BY 
+    total_billing_amount DESC
+LIMIT 3",True,False,4.4522316455841064

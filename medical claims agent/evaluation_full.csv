@@ -1,0 +1,347 @@
+id,nl,ground_truth,llm_answer,sql_used,sql_valid,correct,latency_s
+1,How many claims are recorded in the dataset?,12684,12684,SELECT COUNT(*) FROM claims_tbl,True,True,3.183572292327881
+2,How many distinct patients are represented in the dataset?,12599,12599,"SELECT COUNT(DISTINCT patient_id) AS total_unique_patients
+FROM claims_tbl",True,True,3.2235753536224365
+3,How many distinct doctors are in the dataset?,32,32,"SELECT COUNT(DISTINCT doctor_id) AS number_of_doctors
+FROM claims_tbl",True,True,2.825298309326172
+4,How many distinct hospitals are present?,7,7,"SELECT COUNT(DISTINCT ""hospital_name"") 
+FROM claims_tbl",True,True,2.3534300327301025
+5,How many different insurance providers appear in the claims?,7,7,"SELECT COUNT(DISTINCT ""insurance_provider_name"") 
+FROM claims_tbl",True,True,2.1155078411102295
+6,How many unique medical conditions are recorded?,6,6,"SELECT COUNT(DISTINCT ""MedicalCondition"") 
+FROM claims_tbl",True,True,2.1112887859344482
+7,How many distinct admission types are there?,3,3,"SELECT COUNT(DISTINCT ""admission_type"") AS distinct_admission_types
+FROM claims_tbl",True,True,2.7958126068115234
+8,How many different medications are listed in the claims?,7,7,"SELECT COUNT(DISTINCT medication) AS number_of_medications
+FROM claims_tbl",True,True,2.6925415992736816
+9,How many distinct test result categories exist?,3,3,"SELECT COUNT(DISTINCT ""test_resultS"") 
+FROM claims_tbl",True,True,1.9185681343078613
+10,How many claims were recorded in 2018?,1,1,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE strftime('%Y', admission_date) = '2018'",True,True,3.381787061691284
+11,What is the total billing amount for the year 2018?,14935.47,14935.47,"SELECT SUM(billing_amount) AS total_billing_amount
+FROM claims_tbl
+WHERE strftime('%Y', admission_date) = '2018'",True,True,3.8937060832977295
+12,How many distinct patients had admissions in 2018?,1,1,"SELECT COUNT(DISTINCT patient_id) AS total_patients
+FROM claims_tbl
+WHERE strftime('%Y', admission_date) = '2018'",True,True,3.4867093563079834
+13,What was the average length of stay for admissions in 2018?,1839.0,1839.0,"SELECT AVG(""Length_of_Stay"") AS average_length_of_stay
+FROM claims_tbl
+WHERE strftime('%Y', ""admission_date"") = '2018'",True,True,5.702111005783081
+14,How many claims were recorded in 2020?,2,2,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE strftime('%Y', admission_date) = '2020'",True,True,3.392686128616333
+15,What is the total billing amount for the year 2020?,678231.75,678231.75,"SELECT SUM(billing_amount) AS total_billing_amount
+FROM claims_tbl
+WHERE strftime('%Y', admission_date) = '2020'",True,True,3.658074140548706
+16,How many distinct patients had admissions in 2020?,2,2,"SELECT COUNT(DISTINCT patient_id) 
+FROM claims_tbl 
+WHERE strftime('%Y', admission_date) = '2020'",True,True,5.342787981033325
+17,What was the average length of stay for admissions in 2020?,1233.0,1233.0,"SELECT AVG(""Length_of_Stay"") 
+FROM claims_tbl 
+WHERE strftime('%Y', ""admission_date"") = '2020'",True,True,5.043596982955933
+18,How many claims were recorded in 2021?,7,7,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE strftime('%Y', ""admission_date"") = '2021'",True,True,3.6880815029144287
+19,What is the total billing amount for the year 2021?,476529.38,476529.37999999995,"SELECT SUM(billing_amount) AS total_billing_amount
+FROM claims_tbl
+WHERE strftime('%Y', admission_date) = '2021'",True,True,3.009392499923706
+20,How many distinct patients had admissions in 2021?,7,7,"SELECT COUNT(DISTINCT patient_id) AS total_unique_patients
+FROM claims_tbl
+WHERE strftime('%Y', admission_date) = '2021'",True,True,4.371454477310181
+21,What was the average length of stay for admissions in 2021?,685.29,685.2857142857143,"SELECT AVG(""Length_of_Stay"") 
+FROM claims_tbl 
+WHERE strftime('%Y', ""admission_date"") = '2021'",True,True,4.684001207351685
+22,How many claims were recorded in 2022?,2,2,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE strftime('%Y', admission_date) = '2022'",True,True,2.8730483055114746
+23,What is the total billing amount for the year 2022?,111976.79,111976.79,"SELECT SUM(billing_amount) AS total_billing_amount
+FROM claims_tbl
+WHERE strftime('%Y', admission_date) = '2022'",True,True,4.713695764541626
+24,How many distinct patients had admissions in 2022?,2,2,"SELECT COUNT(DISTINCT ""patient_id"") 
+FROM claims_tbl 
+WHERE strftime('%Y', ""admission_date"") = '2022'",True,True,2.839362621307373
+25,What was the average length of stay for admissions in 2022?,379.0,379.0,"SELECT AVG(""Length_of_Stay"") 
+FROM claims_tbl 
+WHERE strftime('%Y', ""admission_date"") = '2022'",True,True,4.292848348617554
+26,How many claims were recorded in 2023?,12672,12672,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE strftime('%Y', admission_date) = '2023'",True,True,3.5251166820526123
+27,What is the total billing amount for the year 2023?,728793843.68,728793843.6800004,"SELECT SUM(billing_amount) AS total_billing_amount
+FROM claims_tbl
+WHERE strftime('%Y', admission_date) = '2023'",True,True,3.7882704734802246
+28,How many distinct patients had admissions in 2023?,12587,12587,"SELECT COUNT(DISTINCT patient_id) 
+FROM claims_tbl 
+WHERE strftime('%Y', admission_date) = '2023'",True,True,3.250058174133301
+29,What was the average length of stay for admissions in 2023?,7.83,7.8296243686868685,"SELECT AVG(Length_of_Stay) 
+FROM claims_tbl 
+WHERE strftime('%Y', admission_date) = '2023'",True,True,4.877277851104736
+30,How many claims involve male patients?,8,8,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE Gender = 'Male'",True,True,2.405064582824707
+31,What is the average length of stay for male patients?,59.62,59.625,"SELECT AVG(""Length_of_Stay"") AS average_length_of_stay
+FROM claims_tbl
+WHERE ""Gender"" = 'Male'",True,True,2.917539119720459
+32,How many claims involve female patients?,10,10,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE ""Gender"" = 'Female'",True,True,2.1214492321014404
+33,What is the average length of stay for female patients?,14.0,14.0,"SELECT AVG(""Length_of_Stay"") AS average_length_of_stay
+FROM claims_tbl
+WHERE ""Gender"" = 'Female'",True,True,2.5210142135620117
+34,How many claims involve not specified patients?,12666,12666,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE Gender = 'Not Specified'",True,True,2.634148359298706
+35,What is the average length of stay for not specified patients?,8.56,8.563082267487763,"SELECT AVG(""Length_of_Stay"") 
+FROM claims_tbl 
+WHERE ""Gender"" = 'Not Specified'",True,True,1.6668918132781982
+36,How many urgent admissions are recorded?,3914,3914,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE admission_type = 'Urgent'",True,True,2.7050421237945557
+37,What is the average billing amount for urgent admissions?,57672.31,57672.31053270315,"SELECT AVG(billing_amount) 
+FROM claims_tbl 
+WHERE admission_type = 'Urgent'",True,True,4.0874621868133545
+38,What is the average length of stay for urgent admissions?,8.73,8.726111394992335,"SELECT AVG(""Length_of_Stay"") AS average_length_of_stay
+FROM claims_tbl
+WHERE ""admission_type"" = 'Urgent'",True,True,2.882178544998169
+39,How many emergency admissions are recorded?,4952,4952,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE admission_type = 'Emergency'",True,True,3.0469746589660645
+40,What is the average billing amount for emergency admissions?,57783.35,57783.348719708985,"SELECT AVG(billing_amount) AS average_billing_amount
+FROM claims_tbl
+WHERE admission_type = 'Emergency'",True,True,2.550584316253662
+41,What is the average length of stay for emergency admissions?,8.65,8.648626817447497,"SELECT AVG(""Length_of_Stay"") 
+FROM claims_tbl 
+WHERE ""admission_type"" = 'Emergency'",True,True,3.8015313148498535
+42,How many elective admissions are recorded?,3818,3818,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE admission_type = 'Elective'",True,True,2.631610631942749
+43,What is the average billing amount for elective admissions?,57151.11,57151.11335385015,"SELECT AVG(billing_amount) AS average_billing_amount
+FROM claims_tbl
+WHERE admission_type = 'Elective'",True,True,2.93253231048584
+44,What is the average length of stay for elective admissions?,8.41,8.406233630172865,"SELECT AVG(""Length_of_Stay"") 
+FROM claims_tbl 
+WHERE ""admission_type"" = 'Elective'",True,True,3.0185368061065674
+45,What are the five most common medical conditions?,"['Arthritis', 'Diabetes', 'Obesity', 'Hypertension', 'Asthma']","Based on the provided table, the five most common medical conditions are:
+
+1. Arthritis (with 2533 cases)
+2. Diabetes (with 2498 cases)
+3. Obesity (with 2481 cases)
+4. Hypertension (with 2474 cases)
+5. Asthma (with 1897 cases)
+
+These conditions are listed in order of their frequency, with Arthritis being the most common and Asthma being the fifth most common.","SELECT ""MedicalCondition"", COUNT(*) AS condition_count
+FROM claims_tbl
+GROUP BY ""MedicalCondition""
+ORDER BY condition_count DESC
+LIMIT 5",True,False,4.407601356506348
+46,Which hospital has the highest average billing amount?,"{'hospital_name': 'مستشفى الأفق العام', 'avg_billing': 58574.92}","Based on the provided table, the hospital with the highest average billing amount is مستشفى الأفق العام, with an average billing amount of 58574.9224673203.","SELECT 
+  ""hospital_name"", 
+  AVG(""billing_amount"") AS average_billing_amount
+FROM 
+  claims_tbl
+GROUP BY 
+  ""hospital_name""
+ORDER BY 
+  average_billing_amount DESC
+LIMIT 1",True,True,3.431607961654663
+47,Which claim has the highest billing amount and what is that amount?,"{'encounter_id': 34890, 'billing_amount': 614988.22}","The claim with the highest billing amount is encounter_id 34890.0, with a billing amount of 614,988.22.","SELECT encounter_id, billing_amount
+FROM claims_tbl
+ORDER BY billing_amount DESC
+LIMIT 1",True,True,3.8626065254211426
+48,Which claim has the lowest billing amount and what is that amount?,"{'encounter_id': 23706, 'billing_amount': 512.52}","Based on the provided table, the claim with the lowest billing amount is 23706, with a billing amount of 512.52. This is the only claim in the table, so it is the lowest billing amount.","SELECT *
+FROM claims_tbl
+ORDER BY billing_amount ASC
+LIMIT 1",True,True,3.2691221237182617
+49,What is the overall average billing amount across all claims?,57558.78,57558.7761802271,"SELECT AVG(billing_amount) AS overall_average_billing_amount
+FROM claims_tbl",True,True,2.090824604034424
+50,Which three insurance providers have the highest total billing amounts?,"{'شركة القلعة للتأمين ': 106849147.48, 'شركة الوفاء الوطنية للتأمين': 106559153.11, 'شركة الأصالة للتأمين': 105657293.96}","Based on the provided table, the three insurance providers with the highest total billing amounts are:
+
+1. شركة القلعة للتأمين with a total billing amount of 106,849,147.48
+2. شركة الوفاء الوطنية للتأمين with a total billing amount of 106,559,153.11
+3. شركة الأصالة للتأمين with a total billing amount of 105,657,293.96
+
+These three insurance providers have the highest total billing amounts.","SELECT 
+    insurance_provider_name, 
+    SUM(billing_amount) AS total_billing_amount
+FROM 
+    claims_tbl
+GROUP BY 
+    insurance_provider_name
+ORDER BY 
+    total_billing_amount DESC
+LIMIT 3",True,False,4.4522316455841064
+51,How many claims list arthritis as the medical condition?,2533,2533,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE MedicalCondition = 'Arthritis'",True,True,2.2820754051208496
+52,What is the average billing amount for arthritis cases?,56569.58,56569.583995262496,"SELECT AVG(billing_amount) AS average_billing_amount
+FROM claims_tbl
+WHERE MedicalCondition = 'Arthritis'",True,True,2.7070424556732178
+53,What is the average length of stay for arthritis cases?,8.93,8.93485984998026,"SELECT AVG(""Length_of_Stay"") AS average_length_of_stay
+FROM claims_tbl
+WHERE ""MedicalCondition"" = 'Arthritis'",True,True,2.7526888847351074
+54,How many claims list diabetes as the medical condition?,2498,2498,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE MedicalCondition = 'Diabetes'",True,True,2.829672336578369
+55,What is the average billing amount for diabetes cases?,57704.44,57704.43783827057,"SELECT AVG(billing_amount) AS average_billing_amount
+FROM claims_tbl
+WHERE MedicalCondition = 'Diabetes'",True,True,4.290945291519165
+56,What is the average length of stay for diabetes cases?,8.54,8.538831064851882,"SELECT AVG(""Length_of_Stay"") AS average_length_of_stay
+FROM claims_tbl
+WHERE ""MedicalCondition"" = 'Diabetes'",True,True,2.7773630619049072
+57,How many claims list obesity as the medical condition?,2481,2481,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE MedicalCondition = 'Obesity'",True,True,2.443084478378296
+58,What is the average billing amount for obesity cases?,58280.91,58280.912206771405,"SELECT AVG(billing_amount) AS average_billing_amount
+FROM claims_tbl
+WHERE MedicalCondition = 'Obesity'",True,True,2.821402072906494
+59,What is the average length of stay for obesity cases?,8.0,8.003627569528415,"SELECT AVG(""Length_of_Stay"") AS average_length_of_stay
+FROM claims_tbl
+WHERE ""MedicalCondition"" = 'Obesity'",True,True,2.553955554962158
+60,How many claims list hypertension as the medical condition?,2474,2474,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE MedicalCondition = 'Hypertension'",True,True,2.5021491050720215
+61,What is the average billing amount for hypertension cases?,57865.78,57865.77656831046,"SELECT AVG(billing_amount) AS average_billing_amount
+FROM claims_tbl
+WHERE MedicalCondition = 'Hypertension'",True,True,3.1438262462615967
+62,What is the average length of stay for hypertension cases?,9.13,9.127324171382377,"SELECT AVG(""Length_of_Stay"") AS average_length_of_stay
+FROM claims_tbl
+WHERE ""MedicalCondition"" = 'Hypertension'",True,True,2.7675909996032715
+63,How many claims list asthma as the medical condition?,1897,1897,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE MedicalCondition = 'Asthma'",True,True,2.5817437171936035
+64,What is the average billing amount for asthma cases?,57718.25,57718.25197944123,"SELECT AVG(billing_amount) AS average_billing_amount
+FROM claims_tbl
+WHERE MedicalCondition = 'Asthma'",True,True,3.32588791847229
+65,What is the average length of stay for asthma cases?,8.55,8.552451238798103,"SELECT AVG(""Length_of_Stay"") AS average_length_of_stay
+FROM claims_tbl
+WHERE ""MedicalCondition"" = 'Asthma'",True,True,1.9938256740570068
+66,How many claims have inconclusive test results?,5113,5113,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE ""test_resultS"" = 'Inconclusive'",True,True,1.8010008335113525
+67,How many claims have normal test results?,4038,4038,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE test_resultS = 'Normal'",True,True,2.5761871337890625
+68,How many claims have abnormal test results?,3533,3533,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE test_resultS = 'Abnormal'",True,True,2.353276014328003
+69,How many claims in 2023 had admission in month 2?,2,2,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE strftime('%Y', admission_date) = '2023' AND strftime('%m', admission_date) = '02'",True,True,5.478148698806763
+70,How many claims in 2023 had admission in month 3?,2,2,"SELECT COUNT(*)
+FROM claims_tbl
+WHERE strftime('%Y', admission_date) = '2023' AND strftime('%m', admission_date) = '03'",True,True,5.591859579086304
+71,How many claims in 2023 had admission in month 4?,1,1,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE strftime('%Y', admission_date) = '2023' 
+AND strftime('%m', admission_date) = '04'",True,True,5.570382833480835
+72,How many claims in 2023 had admission in month 6?,1,1,"SELECT COUNT(*) AS claim_count
+FROM claims_tbl
+WHERE strftime('%Y', admission_date) = '2023' AND strftime('%m', admission_date) = '06'",True,True,3.8974251747131348
+73,How many claims in 2023 had admission in month 9?,2,2,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE strftime('%Y', admission_date) = '2023' 
+  AND strftime('%m', admission_date) = '09'",True,True,4.451252222061157
+74,How many claims in 2023 had admission in month 10?,3703,3703,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE STRFTIME('%Y', admission_date) = '2023' 
+AND STRFTIME('%m', admission_date) = '10'",True,True,6.080098390579224
+75,How many claims in 2023 had admission in month 11?,4441,4441,"SELECT COUNT(*) AS total_claims
+FROM claims_tbl
+WHERE strftime('%Y', admission_date) = '2023' AND strftime('%m', admission_date) = '11'",True,True,4.282618045806885
+76,How many claims in 2023 had admission in month 12?,4520,4520,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE strftime('%Y', admission_date) = '2023' 
+AND strftime('%m', admission_date) = '12'",True,True,3.557006359100342
+77,What is the average length of stay for patients with arthritis?,8.93,8.93485984998026,"SELECT AVG(""Length_of_Stay"") AS average_length_of_stay
+FROM claims_tbl
+WHERE ""MedicalCondition"" = 'Arthritis'",True,True,2.945361375808716
+78,What is the average length of stay for patients with diabetes?,8.54,8.538831064851882,"SELECT AVG(""Length_of_Stay"") AS average_length_of_stay
+FROM claims_tbl
+WHERE ""MedicalCondition"" = 'Diabetes'",True,True,2.4348247051239014
+79,What is the average length of stay for patients with obesity?,8.0,8.003627569528415,"SELECT AVG(""Length_of_Stay"") AS average_length_of_stay
+FROM claims_tbl
+WHERE ""MedicalCondition"" = 'Obesity'",True,True,2.963444232940674
+80,What is the average length of stay for patients with hypertension?,9.13,9.127324171382377,"SELECT AVG(""Length_of_Stay"") AS average_length_of_stay
+FROM claims_tbl
+WHERE ""MedicalCondition"" = 'Hypertension'",True,True,3.778691053390503
+81,What is the average length of stay for patients with asthma?,8.55,8.552451238798103,"SELECT AVG(""Length_of_Stay"") AS average_length_of_stay
+FROM claims_tbl
+WHERE ""MedicalCondition"" = 'Asthma'",True,True,2.8974242210388184
+82,How many claims are associated with شركة الوفاء الوطنية للتأمين?,1855,1855,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE ""insurance_provider_name"" = 'شركة الوفاء الوطنية للتأمين'",True,True,2.3928894996643066
+83,How many claims are associated with شركة القلعة للتأمين ?,1853,1853,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE ""insurance_provider_name"" = 'شركة القلعة للتأمين'",True,True,3.8229336738586426
+84,How many claims are associated with شركة الأصالة للتأمين?,1830,1830,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE insurance_provider_name = 'شركة الأصالة للتأمين'",True,True,2.2858715057373047
+85,How many claims are associated with شركة عزوم للتأمين?,1813,1813,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE ""insurance_provider_name"" = 'شركة عزوم للتأمين'",True,True,2.3433048725128174
+86,How many claims are associated with شركة الحماية الشاملة للتأمين?,1802,1802,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE ""insurance_provider_name"" = 'شركة الحماية الشاملة للتأمين'",True,True,2.590031147003174
+87,What is the median billing amount across all claims?,57582.36,57597.7575,"SELECT AVG(billing_amount) AS median_billing_amount
+FROM (
+    SELECT billing_amount
+    FROM claims_tbl
+    ORDER BY billing_amount
+    LIMIT 2 - (SELECT COUNT(*) FROM claims_tbl) % 2
+    OFFSET (SELECT (COUNT(*) - 1) / 2 FROM claims_tbl)
+) AS subquery",True,True,5.406999349594116
+88,What is the highest billing amount recorded in 2018?,14935.47,14935.47,"SELECT MAX(billing_amount) AS highest_billing_amount
+FROM claims_tbl
+WHERE strftime('%Y', admission_date) = '2018'",True,True,4.4510509967803955
+89,What is the highest billing amount recorded in 2020?,614988.22,614988.22,"SELECT MAX(billing_amount) AS highest_billing_amount
+FROM claims_tbl
+WHERE strftime('%Y', admission_date) = '2020'",True,True,3.603607177734375
+90,What is the highest billing amount recorded in 2021?,114975.76,114975.76,"SELECT MAX(billing_amount) AS max_billing_amount
+FROM claims_tbl
+WHERE strftime('%Y', admission_date) = '2021'",True,True,4.194586515426636
+91,What is the highest billing amount recorded in 2022?,67574.26,67574.26,"SELECT MAX(billing_amount) AS max_billing_amount
+FROM claims_tbl
+WHERE strftime('%Y', admission_date) = '2022'",True,True,3.4929864406585693
+92,What is the highest billing amount recorded in 2023?,114894.35,114894.35,"SELECT MAX(billing_amount) AS max_billing_amount
+FROM claims_tbl
+WHERE strftime('%Y', admission_date) = '2023'",True,True,3.866654634475708
+93,What is the average billing amount for emergency admissions in 2023?,57679.44,57679.435941164316,"SELECT AVG(billing_amount) AS average_billing_amount
+FROM claims_tbl
+WHERE admission_type = 'Emergency' AND STRFTIME('%Y', admission_date) = '2023'",True,True,5.339710712432861
+94,What is the average billing amount for urgent admissions in 2023?,57669.21,57669.21279283891,"SELECT AVG(billing_amount) 
+FROM claims_tbl 
+WHERE admission_type = 'Urgent' 
+AND strftime('%Y', admission_date) = '2023'",True,True,5.517599821090698
+95,What is the average billing amount for elective admissions in 2023?,57134.36,57134.363599318625,"SELECT AVG(billing_amount) 
+FROM claims_tbl 
+WHERE admission_type = 'Elective' 
+AND STRFTIME('%Y', admission_date) = '2023'",True,True,4.337189435958862
+96,How many male patient claims were recorded in 2023?,7,7,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE ""Gender"" = 'Male' AND strftime('%Y', ""admission_date"") = '2023'",True,True,3.1489293575286865
+97,What is the average length of stay for male patients in 2023?,14.0,14.0,"SELECT AVG(""Length_of_Stay"") AS average_length_of_stay
+FROM claims_tbl
+WHERE ""Gender"" = 'Male' AND strftime('%Y', ""admission_date"") = '2023'",True,True,3.382692575454712
+98,How many female patient claims were recorded in 2023?,10,10,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE Gender = 'Female' AND strftime('%Y', admission_date) = '2023'",True,True,4.0775465965271
+99,What is the average length of stay for female patients in 2023?,14.0,14.0,"SELECT AVG(""Length_of_Stay"") AS average_length_of_stay
+FROM claims_tbl
+WHERE ""Gender"" = 'Female' AND strftime('%Y', ""admission_date"") = '2023'",True,True,3.420710325241089
+100,How many claims had abnormal test results in 2018?,0,0,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE test_resultS = 'Abnormal' AND strftime('%Y', admission_date) = '2018'",True,True,4.107659339904785
+101,How many claims had abnormal test results in 2020?,1,1,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE test_resultS = 'Abnormal' 
+AND strftime('%Y', admission_date) = '2020'",True,True,3.422957420349121
+102,How many claims had abnormal test results in 2021?,2,2,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE ""test_resultS"" = 'Abnormal' 
+  AND strftime('%Y', ""admission_date"") = '2021'",True,True,3.8568062782287598
+103,How many claims had abnormal test results in 2022?,0,0,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE test_resultS = 'Abnormal' AND strftime('%Y', admission_date) = '2022'",True,True,4.186336517333984
+104,How many claims had abnormal test results in 2023?,3530,3530,"SELECT COUNT(*) 
+FROM claims_tbl 
+WHERE test_resultS = 'Abnormal' AND strftime('%Y', admission_date) = '2023'",True,True,3.0576369762420654
